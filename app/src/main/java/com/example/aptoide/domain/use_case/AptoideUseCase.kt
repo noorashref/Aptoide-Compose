@@ -1,12 +1,7 @@
 package com.example.aptoide.domain.use_case
 
-import android.util.Log
-import com.example.aptoide.data.remote.dto.AppListResponse
-import com.example.aptoide.data.remote.dto.toAppListModel
-import com.example.aptoide.data.repository.AptoideRepositoryImpl
-import com.example.aptoide.data.responses.AppListResponseDto
+
 import com.example.aptoide.data.responses.AppListResponses
-import com.example.aptoide.domain.model.AppListModel
 import com.example.aptoide.domain.repository.AptoideRepository
 import com.example.aptoide.util.Resource
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +11,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 private const val TAG = "AptoideUseCase"
+
 class AptoideUseCase @Inject constructor(
     private val repository: AptoideRepository
 ) {

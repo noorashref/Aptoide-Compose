@@ -8,4 +8,6 @@ interface AptoideApi {
 
     @GET("api/6/bulkRequest/api_list/listApps")
     suspend fun getAppList() : AppListResponseDto
+
+    //http://ws2.aptoide.com/api/6/bulkRequest/api_list/listApps
 }

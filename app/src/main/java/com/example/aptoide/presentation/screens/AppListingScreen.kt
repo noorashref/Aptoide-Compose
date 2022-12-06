@@ -48,6 +48,9 @@ fun AppListingScreen(
                 items(state.appListing) { appLists ->
                     AppListItem(
                         appListModel = appLists,
+                        onItemClick = {
+                            navController.navigate(Screen.AppDetailScreen.route + "/${appLists.id}")
+                        }
                     )
                     Spacer(modifier = Modifier.padding(5.dp))
                 }

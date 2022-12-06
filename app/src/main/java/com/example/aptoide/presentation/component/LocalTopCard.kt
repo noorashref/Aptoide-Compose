@@ -16,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.Text
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import coil.compose.rememberAsyncImagePainter
@@ -26,7 +27,7 @@ fun LocalTopCard(
     appListModel: AppListResponses
 ) {
 
-    val contentDescription = "Learn Consistently"
+    val contentDescription = "${appListModel.name} And the rating is ${appListModel.rating}"
     val title = appListModel.name
     val ratings = appListModel.rating
 
@@ -61,6 +62,7 @@ fun LocalTopCard(
             ) {
                 Text(
                     title,
+                    modifier = Modifier.clearAndSetSemantics {  },
                     style = TextStyle(
                         color = Color.Black,
                         fontSize = 15.sp,
@@ -79,6 +81,7 @@ fun LocalTopCard(
             ) {
                 Text(
                     ratings.toString(),
+                    modifier = Modifier.clearAndSetSemantics {  },
                     textAlign = TextAlign.Left,
                     style = TextStyle(
                         color = Color.Black,

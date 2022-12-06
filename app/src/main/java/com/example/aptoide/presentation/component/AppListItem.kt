@@ -2,6 +2,7 @@ package com.example.aptoide.presentation.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -13,6 +14,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,15 +24,20 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.aptoide.data.responses.AppListResponses
 
 @Composable
-fun AppListItem(appListModel: AppListResponses) {
+fun AppListItem(
+    appListModel: AppListResponses,
+    onItemClick: (AppListResponses) -> Unit
+) {
 
-    val contentDescription = "Learn Consistently"
+    val contentDescription = appListModel.name
     val title = appListModel.name
 
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
-        ) {
+            .fillMaxWidth()
+            .clickable { onItemClick(appListModel) }
+        ,
+    ) {
         Card(
             modifier = Modifier
                 .width(300.dp),
@@ -66,6 +73,7 @@ fun AppListItem(appListModel: AppListResponses) {
                 ) {
                     Text(
                         title,
+                        modifier = Modifier.clearAndSetSemantics {  },
                         style = TextStyle(
                             color = Color.White,
                             fontSize = 15.sp,
